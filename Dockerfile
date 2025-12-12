@@ -10,7 +10,6 @@ WORKDIR /app
 # Copy necessary files
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 COPY .eslintrc.json .prettierignore* prettierrc.json* ./
-COPY next-env.d.ts ./
 COPY tsconfig.json tailwind.config.ts postcss.config.js ./
 COPY next.config.mjs ./
 
@@ -36,7 +35,7 @@ COPY --from=deps /app/node_modules ./node_modules
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED=1
 ENV NEXT_PUBLIC_API_URL=http://localhost:6701
 ENV NEXT_PUBLIC_SOCKET_URL=/api
 
@@ -53,8 +52,8 @@ COPY --from=deps-production /app/node_modules ./node_modules
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -77,8 +76,8 @@ USER nextjs
 ARG PORT 3035
 EXPOSE ${PORT}
 
-ENV PORT ${PORT}
-ENV HOSTNAME "0.0.0.0"
+ENV PORT=${PORT}
+ENV HOSTNAME="0.0.0.0"
 
 # Run the script when the container starts
 # server.js is created by next build from the standalone output
