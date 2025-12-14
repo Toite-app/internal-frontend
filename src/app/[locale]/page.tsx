@@ -1,5 +1,5 @@
-const Home = () => {
-  return <></>;
-};
+import { redirect } from "@/navigation";
 
-export default Home;
+export default function Home() {
+  redirect("/sign-in");
+}
