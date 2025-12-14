@@ -16,6 +16,7 @@ import { useSession } from "../guards/hooks/useSession";
 import { useTranslations } from "next-intl";
 import { MessageCategories } from "@/messages/index.types";
 import { LogoutButton } from "./components/LogoutButton";
+import { Link } from "@/navigation";
 
 export const NavigationBar: FC = () => {
   const { isOpen, toggle } = useNavigationStore();
@@ -38,7 +39,8 @@ export const NavigationBar: FC = () => {
             !isOpen && "flex-col gap-3 p-1 pb-3 pt-6"
           )}
         >
-          <div
+          <Link
+            href="/dashboard"
             className={cn(
               "relative h-auto min-h-[30px] w-[200px] dark:invert",
               !isOpen && "min-h-[20px] w-[40px]"
@@ -55,7 +57,7 @@ export const NavigationBar: FC = () => {
               alt=""
               priority
             />
-          </div>
+          </Link>
           <Button
             variant="outline"
             size="sm"
