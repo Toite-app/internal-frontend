@@ -81,7 +81,8 @@
   "Restaurants": {
     "page": {
       "description": "Manage restaurant data in the system",
-      "create": "Create"
+      "create": "Create",
+      "search-placeholder": "Restaurant Finder..."
     },
     "dialog": {
       "create-title": "Create Restaurant",
@@ -98,7 +99,8 @@
         "latitude-placeholder": "Enter latitude",
         "longitude-placeholder": "Enter longitude",
         "owner-placeholder": "Select the owner",
-        "timezone-placeholder": "Select the time zone"
+        "timezone-placeholder": "Select the time zone",
+        "currency-placeholder": "Select currency"
       }
     },
     "tabs": {
@@ -107,7 +109,8 @@
       "staff": "Staff",
       "statistics": "Statistics",
       "payment-methods": "Methods of payment",
-      "dish-modifiers": "Meal modifiers"
+      "dish-modifiers": "Meal modifiers",
+      "references-book": "Handbook"
     },
     "columns": {
       "dayOfWeek": "Day of Week",
@@ -132,7 +135,8 @@
     "disabled": "Disabled",
     "blocked": "Blocked",
     "delete": "Delete",
-    "upload": "Download"
+    "upload": "Download",
+    "cancel": "Cancellation"
   },
   "navbar": {
     "dashboard": "Dashboard",
@@ -159,7 +163,9 @@
     "orders-edit": "Edit order",
     "discounts-edit": "Edit discount",
     "orders-kitchen": "Kitchen",
-    "discount": "Discount"
+    "discount": "Discount",
+    "dishes-edit": "Edit the dish",
+    "workshift": "Shift"
   },
   "fields": {
     "login": "Login",
@@ -204,11 +210,14 @@
     "printLabelEveryItem": "Labels per serving",
     "isPublishedInApp": "Published in the appendix",
     "isPublishedAtSite": "Published on",
-    "restaurants": "Restaurants"
+    "restaurants": "Restaurants",
+    "currency": "Currency",
+    "categories": "Categories"
   },
   "errors": {
     "unknown": "Unknown error",
-    "user-not-found": "User not found"
+    "user-not-found": "User not found",
+    "server-error": "There has been an error on the server. Please try again later"
   },
   "roles": {
     "SYSTEM_ADMIN": "System Administrator",
@@ -346,7 +355,8 @@
         "amountPerItem-placeholder": "Enter the quantity in one serving",
         "weight-placeholder": "Enter the weight",
         "printLabelEveryItem-placeholder": "Enter the number of labels per serving",
-        "menu-placeholder": "Select menu"
+        "menu-placeholder": "Select menu",
+        "categories-placeholder": "Select categories"
       }
     },
     "form": {
@@ -554,7 +564,8 @@
       "create-success-description": "The order has been successfully created",
       "payment-method": "Method of payment",
       "payment-method-placeholder": "Choose a payment method",
-      "no-payment-methods-warning": "There are no payment methods available at this restaurant. Please contact the receptionist"
+      "no-payment-methods-warning": "There are no payment methods available at this restaurant. Please contact the receptionist",
+      "history": "Change history"
     },
     "types": {
       "delivery": "Delivery",
@@ -573,7 +584,8 @@
       "add-button": "Add",
       "no-restaurant-warning": "Designate a restaurant to add dishes",
       "no-restaurant-warning-description": "Select a restaurant in the basic ordering information"
-    }
+    },
+    "no-restaurants-found": "No restaurants found"
   },
   "dayOfWeekShort": {
     "monday": "Mon",
@@ -731,7 +743,28 @@
       "submit": "Save the discount",
       "restaurants": "Restaurants",
       "restaurants-search": "Restaurant Finder...",
-      "restaurants-description": "Select the restaurants where the discount will apply"
+      "restaurants-description": "Select the restaurants where the discount will apply",
+      "applyStartAndEndTime": "Apply action time",
+      "applyStartAndEndTime-description": "Set the start and end time of the discount",
+      "startTime": "Start time",
+      "endTime": "End time",
+      "time-format-description": "Enter the time in HH:MM format",
+      "menus-and-categories": "Menus and categories",
+      "menus-and-categories-description": "Select the menu and categories to which the discount will be applied",
+      "append-menu": "Add menu",
+      "categories": "Categories",
+      "remove-menu-tooltip": "Delete menu",
+      "remove-menu-confirm-title": "Delete the menu?",
+      "remove-menu-confirm-description": "Are you sure you want to remove the menu \"{menuName}\" from the discount? The selected restaurants and categories for this menu will also be removed.",
+      "remove-menu-confirm-button": "Delete",
+      "no-restaurants": "There are no restaurants on this menu",
+      "no-categories": "There are no categories in this menu",
+      "guests": "Guests",
+      "guests-description": "By selecting specific guests you can create a personalized discount for them",
+      "enter-guest-phone": "Enter the number...",
+      "add-guest": "Add a guest",
+      "guest-added-at": "Added(s)",
+      "not-finded": "Guest not found"
     },
     "card": {
       "expired": "Expired",
@@ -784,5 +817,156 @@
         "description": "Maximum quantity to be returned: {max}"
       }
     }
+  },
+  "currency": {
+    "RUB": "Ruble",
+    "EUR": "Euro",
+    "USD": "Dollar"
+  },
+  "workshifts": {
+    "create": "Create a shift",
+    "description": "A list of all the shifts that your restaurants have",
+    "columns": {
+      "restaurant": "Restaurant",
+      "status": "Status",
+      "openedAt": "Open",
+      "closedAt": "Closed",
+      "createdAt": "Established"
+    },
+    "status-enum": {
+      "PLANNED": "Planned",
+      "OPENED": "Open",
+      "CLOSED": "Closed"
+    },
+    "opened-at": "Opened {openedAt}",
+    "closed-at": "Closed {closedAt}",
+    "prev": "Previous shift",
+    "next": "Next shift",
+    "close-workshift": "Close the shift",
+    "open": "Open",
+    "close": "Close",
+    "show": "Showing",
+    "restaurant-selector": {
+      "placeholder": "Choose a restaurant",
+      "all": "All restaurants"
+    },
+    "dialog": {
+      "create-title": "Open shift",
+      "description": "Select the restaurant where you want to open a shift",
+      "submit": "Open shift",
+      "create-success": "Shift is open",
+      "create-success-description": "The shift has been successfully opened",
+      "form": {
+        "restaurant-placeholder": "Choose a restaurant",
+        "restaurant-label": "Restaurant",
+        "restaurant-description": "Select the restaurant where you want to open a shift"
+      },
+      "close-title": "Close the shift",
+      "close-description": "Are you sure you want to close the shift at restaurant \"{restaurantName}\" opened by {openedAt}?",
+      "close-submit": "Close the shift",
+      "close-success": "Shift's closed",
+      "close-success-description": "Shift successfully closed"
+    }
+  },
+  "PaymentCategories": {
+    "types": {
+      "INCOME": "Revenues",
+      "EXPENSE": "Expenses",
+      "CASHLESS": "Cashless"
+    },
+    "no-categories": "No categories",
+    "add-category": "Add a category",
+    "add-subcategory": "Add a subcategory",
+    "edit-category": "Edit category",
+    "delete-category": "Delete category",
+    "dialog": {
+      "create-title": "Create a category",
+      "edit-title": "Edit category",
+      "create-success": "Category created",
+      "create-success-description": "The category has been successfully created",
+      "edit-success": "Category updated",
+      "edit-success-description": "The category has been successfully updated",
+      "submit": "Save",
+      "form": {
+        "name-placeholder": "Enter the name of the category",
+        "description-placeholder": "Enter a description of the category"
+      },
+      "delete-title": "Deleting a category",
+      "delete-description": "Are you sure you want to delete the category \"{name}\"? This action cannot be undone.",
+      "delete-success": "Category removed",
+      "delete-success-description": "The category has been successfully deleted"
+    }
+  },
+  "workshift-payments": {
+    "income-and-cashless": {
+      "title": "Revenues and non-cash"
+    },
+    "expenses": {
+      "title": "Expenses"
+    },
+    "create-new-payment": "Create payment",
+    "payment-amount": "Amount",
+    "payment-amount-placeholder": "Enter the amount",
+    "payment-category": "Assignment",
+    "payment-category-placeholder": "Select a destination",
+    "comment": "Commentary",
+    "comment-placeholder": "Optional",
+    "other-options": "Other options",
+    "create-success": "Payment created",
+    "create-success-description": "Payment successfully created",
+    "delete-payment": "Delete payment",
+    "remove-dialog": {
+      "title": "Deleting a payment",
+      "description": "Are you sure you want to delete a payment for the amount {amount} {currency} ({categoryName})?",
+      "submit": "Delete",
+      "success": "Payment deleted",
+      "success-description": "Payment successfully deleted",
+      "cancel": "Cancellation"
+    },
+    "removed-at": "Deleted {date} {worker}",
+    "no-payments": "No payments",
+    "no-payments-description": "There are no payments on this shift yet"
+  },
+  "common": {
+    "delete": "Delete",
+    "cancel": "Cancellation"
+  },
+  "precheck": {
+    "order-number": "Order #{orderNumber}",
+    "order-type": {
+      "delivery": "Delivery",
+      "takeaway": "With myself",
+      "hall": "Hall",
+      "banquet": "Banquet"
+    },
+    "worker-role": {
+      "SYSTEM_ADMIN": "Sys. admin",
+      "CHIEF_ADMIN": "Chief Administrative Officer",
+      "ADMIN": "Admin",
+      "OWNER": "Owner",
+      "KITCHENER": "Cook",
+      "WAITER": "Waiter",
+      "CASHIER": "Cashier",
+      "DISPATCHER": "Dispatcher",
+      "COURIER": "Courier"
+    },
+    "printed-by": "Of. {workerName} ({workerRole})",
+    "quantity": "{quantity}pcs.",
+    "surcharge": "Markup",
+    "discount": "Discount",
+    "summary": "Total",
+    "for-payment": "Payable to",
+    "outro": "Thank you, we look forward to seeing you again!"
+  },
+  "order-history": {
+    "type": {
+      "created": "The order has been created",
+      "precheck": "Printed out the pre-check",
+      "sent_to_kitchen": "Dishes have been sent to the kitchen",
+      "dishes_ready": "The dishes are prepared",
+      "discounts_enabled": "Discounts applied"
+    },
+    "system": "system",
+    "see-precheck": "View Precheck"
   }
 }

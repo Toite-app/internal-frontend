@@ -81,7 +81,8 @@
   "Restaurants": {
     "page": {
       "description": "Halda süsteemi restoranide andmeid",
-      "create": "Loo"
+      "create": "Loo",
+      "search-placeholder": "Restoranide leidmine..."
     },
     "dialog": {
       "create-title": "Loo restoran",
@@ -98,7 +99,8 @@
         "latitude-placeholder": "Sisestage laiuskraad",
         "longitude-placeholder": "Sisestage pikkuskraad",
         "owner-placeholder": "Valige omanik",
-        "timezone-placeholder": "Valige ajavöönd"
+        "timezone-placeholder": "Valige ajavöönd",
+        "currency-placeholder": "Valuuta valimine"
       }
     },
     "tabs": {
@@ -107,7 +109,8 @@
       "staff": "Personal",
       "statistics": "Statistika",
       "payment-methods": "Makseviisid",
-      "dish-modifiers": "Toitude modifitseerijad"
+      "dish-modifiers": "Toitude modifitseerijad",
+      "references-book": "Käsiraamat"
     },
     "columns": {
       "dayOfWeek": "Nädalapäev",
@@ -132,7 +135,8 @@
     "disabled": "Mitteaktiivne",
     "blocked": "Blokeeritud",
     "delete": "Kustuta",
-    "upload": "Lae alla"
+    "upload": "Lae alla",
+    "cancel": "Tühistamine"
   },
   "navbar": {
     "dashboard": "Pealeht",
@@ -159,7 +163,9 @@
     "orders-edit": "Korralduse muutmine",
     "discounts-edit": "Redigeeri allahindlust",
     "orders-kitchen": "Köök",
-    "discount": "Allahindlus"
+    "discount": "Allahindlus",
+    "dishes-edit": "Redigeeri roogi",
+    "workshift": "Vahetus"
   },
   "fields": {
     "login": "Kasutajanimi",
@@ -204,11 +210,14 @@
     "printLabelEveryItem": "Etiketid portsjoni kohta",
     "isPublishedInApp": "Avaldatud rakenduses",
     "isPublishedAtSite": "Avaldatud veebilehel",
-    "restaurants": "Restoranid"
+    "restaurants": "Restoranid",
+    "currency": "Valuuta",
+    "categories": "Kategooriad"
   },
   "errors": {
     "unknown": "Tundmatu viga",
-    "user-not-found": "Kasutajat ei leitud"
+    "user-not-found": "Kasutajat ei leitud",
+    "server-error": "Serveris on toimunud viga. Palun proovige hiljem uuesti"
   },
   "roles": {
     "SYSTEM_ADMIN": "Süsteemi administraator",
@@ -346,7 +355,8 @@
         "amountPerItem-placeholder": "Sisestage kogus ühes portsjonis",
         "weight-placeholder": "Sisestage kaal",
         "printLabelEveryItem-placeholder": "Sisestage etikettide arv portsjoni kohta",
-        "menu-placeholder": "Valige menüü"
+        "menu-placeholder": "Valige menüü",
+        "categories-placeholder": "Valige kategooriad"
       }
     },
     "form": {
@@ -554,7 +564,8 @@
       "create-success-description": "Tellimus on edukalt loodud",
       "payment-method": "Makseviis",
       "payment-method-placeholder": "Valige makseviis",
-      "no-payment-methods-warning": "Selles restoranis puuduvad makseviisid. Palun võtke ühendust vastuvõtuametnikuga"
+      "no-payment-methods-warning": "Selles restoranis puuduvad makseviisid. Palun võtke ühendust vastuvõtuametnikuga",
+      "history": "Muutuste ajalugu"
     },
     "types": {
       "delivery": "Kohaletoimetamine",
@@ -573,7 +584,8 @@
       "add-button": "Lisa.",
       "no-restaurant-warning": "Määrake restoran, et lisada roogasid",
       "no-restaurant-warning-description": "Valige restoran põhitellimusteabes"
-    }
+    },
+    "no-restaurants-found": "Ei leitud restorane"
   },
   "dayOfWeekShort": {
     "monday": "Mon",
@@ -731,7 +743,28 @@
       "submit": "Salvesta allahindlus",
       "restaurants": "Restoranid",
       "restaurants-search": "Restoranide leidmine...",
-      "restaurants-description": "Valige restoranid, kus soodustust kohaldatakse"
+      "restaurants-description": "Valige restoranid, kus soodustust kohaldatakse",
+      "applyStartAndEndTime": "Rakenda toiminguaeg",
+      "applyStartAndEndTime-description": "Määrake allahindluse algus- ja lõpuaeg",
+      "startTime": "Algusaeg",
+      "endTime": "Lõpuaeg",
+      "time-format-description": "Sisestage kellaaeg HH:MM-vormingus",
+      "menus-and-categories": "Menüüd ja kategooriad",
+      "menus-and-categories-description": "Valige menüü ja kategooriad, mille suhtes allahindlust kohaldatakse.",
+      "append-menu": "Menüü lisamine",
+      "categories": "Kategooriad",
+      "remove-menu-tooltip": "Menüü kustutamine",
+      "remove-menu-confirm-title": "Kustutada menüü?",
+      "remove-menu-confirm-description": "Kas olete kindel, et soovite menüü \"{menuName}\" allahindlustelt eemaldada? Selle menüü valitud restoranid ja kategooriad kustutatakse samuti.",
+      "remove-menu-confirm-button": "Kustuta",
+      "no-restaurants": "Selles menüüs ei ole ühtegi restorani",
+      "no-categories": "Selles menüüs ei ole kategooriaid",
+      "guests": "Külalised",
+      "guests-description": "Konkreetsete külaliste valimisel saate luua neile personaalse allahindluse.",
+      "enter-guest-phone": "Sisestage number...",
+      "add-guest": "Lisa külaline",
+      "guest-added-at": "Lisatud.",
+      "not-finded": "Külalist ei leitud"
     },
     "card": {
       "expired": "Aegunud",
@@ -784,5 +817,156 @@
         "description": "Maksimaalne tagastatav kogus: {max}"
       }
     }
+  },
+  "currency": {
+    "RUB": "Rubla",
+    "EUR": "Euro",
+    "USD": "Dollar"
+  },
+  "workshifts": {
+    "create": "Loo nihke",
+    "description": "Nimekiri kõigist teie restoranides toimuvatest vahetustest.",
+    "columns": {
+      "restaurant": "Restoran",
+      "status": "Staatus",
+      "openedAt": "See on avatud",
+      "closedAt": "Suletud",
+      "createdAt": "Kehtestatud"
+    },
+    "status-enum": {
+      "PLANNED": "Planeeritud",
+      "OPENED": "See on avatud",
+      "CLOSED": "Suletud"
+    },
+    "opened-at": "Avatud {openedAt}",
+    "closed-at": "Suletud {closedAt}",
+    "prev": "Eelmine nihe",
+    "next": "Järgmine vahetus",
+    "close-workshift": "Sulgege vahetust",
+    "open": "Avasta",
+    "close": "Sulge",
+    "show": "Näidatakse",
+    "restaurant-selector": {
+      "placeholder": "Valige restoran",
+      "all": "Kõik restoranid"
+    },
+    "dialog": {
+      "create-title": "Avage vahetus",
+      "description": "Valige restoran, kus soovite avada vahetuse",
+      "submit": "Avage vahetus",
+      "create-success": "Vahetus on avatud",
+      "create-success-description": "Üleminek on edukalt avatud",
+      "form": {
+        "restaurant-placeholder": "Valige restoran",
+        "restaurant-label": "Restoran",
+        "restaurant-description": "Valige restoran, kus soovite avada vahetuse"
+      },
+      "close-title": "Sulgege vahetust",
+      "close-description": "Kas olete kindel, et soovite sulgeda vahetuse restoranis \"{restoranNimi}\", mille avas {openedAt}?",
+      "close-submit": "Sulgege vahetust",
+      "close-success": "Vahetus on suletud",
+      "close-success-description": "Üleminek on edukalt lõpetatud"
+    }
+  },
+  "PaymentCategories": {
+    "types": {
+      "INCOME": "Tulud",
+      "EXPENSE": "Kulud",
+      "CASHLESS": "Sularahata"
+    },
+    "no-categories": "Kategooriad puuduvad",
+    "add-category": "Lisage kategooria",
+    "add-subcategory": "Lisa alamkategooria",
+    "edit-category": "Muuda kategooriat",
+    "delete-category": "Kustuta kategooria",
+    "dialog": {
+      "create-title": "Loo kategooria",
+      "edit-title": "Muuda kategooriat",
+      "create-success": "Loodud kategooria",
+      "create-success-description": "Kategooria on edukalt loodud",
+      "edit-success": "Uuendatud kategooria",
+      "edit-success-description": "Kategooria on edukalt uuendatud",
+      "submit": "Salvesta",
+      "form": {
+        "name-placeholder": "Sisestage kategooria nimi",
+        "description-placeholder": "Sisestage kategooria kirjeldus"
+      },
+      "delete-title": "Kategooria kustutamine",
+      "delete-description": "Kas olete kindel, et soovite kategooria \"{nimi}\" kustutada? Seda tegevust ei saa tühistada.",
+      "delete-success": "Kategooria eemaldatud",
+      "delete-success-description": "Kategooria on edukalt kustutatud"
+    }
+  },
+  "workshift-payments": {
+    "income-and-cashless": {
+      "title": "Tulud ja mitterahalised tulud"
+    },
+    "expenses": {
+      "title": "Kulud"
+    },
+    "create-new-payment": "Loo makse",
+    "payment-amount": "Summa",
+    "payment-amount-placeholder": "Sisestage summa",
+    "payment-category": "Ülesanne",
+    "payment-category-placeholder": "Valige sihtkoht",
+    "comment": "Kommentaar",
+    "comment-placeholder": "Valikuline",
+    "other-options": "Muud võimalused",
+    "create-success": "Makse loodud",
+    "create-success-description": "Makse edukalt loodud",
+    "delete-payment": "Kustuta makse",
+    "remove-dialog": {
+      "title": "Makse kustutamine",
+      "description": "Kas olete kindel, et soovite kustutada makse summas {summa} {valuuta} ({kategooriaNimi})?",
+      "submit": "Kustuta",
+      "success": "Makse kustutatud",
+      "success-description": "Makse edukalt kustutatud",
+      "cancel": "Tühistamine"
+    },
+    "removed-at": "Kustutatud {kuupäev} {töötaja}",
+    "no-payments": "Makseid ei tehta",
+    "no-payments-description": "Selle vahetuse kohta ei ole veel makseid tehtud"
+  },
+  "common": {
+    "delete": "Kustuta",
+    "cancel": "Tühistamine"
+  },
+  "precheck": {
+    "order-number": "Tellimus #{TellimusNumber}",
+    "order-type": {
+      "delivery": "Kohaletoimetamine",
+      "takeaway": "Minuga.",
+      "hall": "Saal",
+      "banquet": "Bankett"
+    },
+    "worker-role": {
+      "SYSTEM_ADMIN": "Süsteemi administraator",
+      "CHIEF_ADMIN": "Haldusjuht",
+      "ADMIN": "Admin",
+      "OWNER": "Omanik",
+      "KITCHENER": "Cook",
+      "WAITER": "Kelner",
+      "CASHIER": "Kassapidaja",
+      "DISPATCHER": "Dispetšer",
+      "COURIER": "Kuller"
+    },
+    "printed-by": "Of. {workerName} ({workerRole})",
+    "quantity": "{kogus}pc.",
+    "surcharge": "Märgistus",
+    "discount": "Allahindlus",
+    "summary": "Kokku",
+    "for-payment": "Maksmisele kuuluvad",
+    "outro": "Täname teid, ootame teid taas!"
+  },
+  "order-history": {
+    "type": {
+      "created": "Tellimus on loodud",
+      "precheck": "Prinditud eelkontroll",
+      "sent_to_kitchen": "Nõud on saadetud kööki",
+      "dishes_ready": "Toidud on keedetud",
+      "discounts_enabled": "Kohaldatud allahindlused"
+    },
+    "system": "süsteem",
+    "see-precheck": "Vaata eelkontrolli"
   }
 }
