@@ -12,6 +12,7 @@ import NavMenuItem from "./components/MenuItem";
 import { useNavigationStore } from "./store";
 import { cn } from "@/lib/utils";
 import ThemeButton from "./components/ThemeButton";
+import LanguageSelector from "@/components/toite/language-selector";
 import { useSession } from "../guards/hooks/useSession";
 import { useTranslations } from "next-intl";
 import { MessageCategories } from "@/messages/index.types";
@@ -78,7 +79,10 @@ export const NavigationBar: FC = () => {
           </ScrollArea>
         </div>
         <div className="mt-auto flex flex-col gap-2">
-          <ThemeButton showText={isOpen} />
+          <div className="flex flex-col gap-2 px-4">
+            <LanguageSelector showText={isOpen} className="w-full" />
+            <ThemeButton showText={isOpen} className="w-full" />
+          </div>
           <div
             className={cn(
               "flex min-w-[250px] flex-row items-center border-t border-stone-200 p-4 dark:border-stone-800",

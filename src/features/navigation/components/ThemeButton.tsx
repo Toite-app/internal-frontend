@@ -8,11 +8,12 @@ import { useTheme } from "next-themes";
 import { FC } from "react";
 
 type Props = {
+  className?: string;
   showText?: boolean;
 };
 
 export const ThemeButton: FC<Props> = (props) => {
-  const { showText = true } = props;
+  const { showText = true, className } = props;
 
   const t = useTranslations(MessageCategories.TOITE);
   const { theme, setTheme } = useTheme();
@@ -25,7 +26,7 @@ export const ThemeButton: FC<Props> = (props) => {
 
   return (
     <div
-      className="flex items-center justify-center px-4 py-2"
+      className={cn("flex items-center justify-center", className)}
       suppressHydrationWarning
     >
       <Button
