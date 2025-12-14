@@ -32,7 +32,7 @@ export const useGetColumns = (options: Options) => {
   const { onEdit } = options;
   const locale = useLocale();
   const t = useTranslations();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openMenuRowId, setOpenMenuRowId] = useState<string | null>(null);
 
   return useMemo<ColumnDef<IGuest>[]>(
     () => [
@@ -111,8 +111,16 @@ export const useGetColumns = (options: Options) => {
       {
         id: "actions",
         cell: ({ row }) => {
+          const rowId = row.original.id;
+          const isOpen = openMenuRowId === rowId;
+
           return (
-            <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <DropdownMenu
+              open={isOpen}
+              onOpenChange={(open) => {
+                setOpenMenuRowId(open ? rowId : null);
+              }}
+            >
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="h-8 w-8 p-0">
                   <span className="sr-only">
@@ -141,7 +149,7 @@ export const useGetColumns = (options: Options) => {
                 <DropdownMenuItem
                   className="cursor-pointer"
                   onClick={() => {
-                    setIsMenuOpen(false);
+                    setOpenMenuRowId(null);
                     onEdit(row.original);
                   }}
                 >
@@ -158,6 +166,6 @@ export const useGetColumns = (options: Options) => {
         },
       },
     ],
-    [t, locale, onEdit, isMenuOpen]
+    [t, locale, onEdit, openMenuRowId]
   );
 };
