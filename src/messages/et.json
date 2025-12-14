@@ -969,5 +969,8 @@
     },
     "system": "süsteem",
     "see-precheck": "Vaata eelkontrolli"
+  },
+  "not-found": {
+    "message": "Lehte ei leitud"
   }
 }

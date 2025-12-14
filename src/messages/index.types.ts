@@ -12,4 +12,5 @@ export enum MessageCategories {
   ERRORS = "errors",
   ROLES = "roles",
   WORKERS_PAGE = "workers-page",
+  NOT_FOUND = "not-found",
 }

@@ -969,5 +969,8 @@
     },
     "system": "system",
     "see-precheck": "View Precheck"
+  },
+  "not-found": {
+    "message": "Page not found"
   }
 }
