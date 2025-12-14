@@ -38,27 +38,17 @@ export const menuItems: MenuItem[] = [
       },
       {
         labelId: "orders-kitchen",
-        href: "/orders/kitchen",
-      },
-      {
-        labelId: "orders-hall",
-        href: "/orders/hall",
-      },
-      {
-        labelId: "orders-banquet",
-        href: "/orders/banquet",
-      },
-      {
-        labelId: "orders-takeaway",
-        href: "/orders/takeaway",
+        href: "/orders/kitchener",
       },
       {
         labelId: "orders-delivery",
         href: "/orders/delivery",
+        disabled: true,
       },
       {
         labelId: "orders-archive",
         href: "/orders/archive",
+        disabled: true,
       },
     ],
   },
@@ -75,6 +65,7 @@ export const menuItems: MenuItem[] = [
         labelId: "finances-report",
         href: "/finances",
         icon: <CandlestickChartIcon />,
+        disabled: true,
       },
     ],
   },
