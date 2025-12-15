@@ -18,6 +18,7 @@ import { useTranslations } from "next-intl";
 import { MessageCategories } from "@/messages/index.types";
 import { LogoutButton } from "./components/LogoutButton";
 import { Link } from "@/navigation";
+import { MobileNav } from "./components/MobileNav";
 
 export const NavigationBar: FC = () => {
   const { isOpen, toggle } = useNavigationStore();
@@ -28,87 +29,93 @@ export const NavigationBar: FC = () => {
   const name = data?.name ?? data?.login;
 
   return (
-    <div
-      data-open={isOpen}
-      className="fixed left-0 top-0 z-20 h-screen border-r bg-stone-50 transition-all data-[open=false]:w-[82px] data-[open=true]:w-[300px] dark:bg-stone-900"
-    >
-      <div className="flex h-full max-h-[100vh] flex-col gap-2 overflow-clip">
-        <div
-          className={cn(
-            "border-b border-stone-200 dark:border-stone-800",
-            "flex flex-row items-center p-6 pb-4",
-            !isOpen && "flex-col gap-3 p-1 pb-3 pt-6"
-          )}
-        >
-          <Link
-            href="/dashboard"
-            className={cn(
-              "relative h-auto min-h-[30px] w-[200px] dark:invert",
-              !isOpen && "min-h-[20px] w-[40px]"
-            )}
-          >
-            <Image
-              src={TOITE_CONFIG.logo.svg}
-              fill
-              style={{
-                width: "100%",
-                objectFit: "contain",
-                objectPosition: "left",
-              }}
-              alt=""
-              priority
-            />
-          </Link>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => {
-              toggle();
-            }}
-          >
-            <MenuIcon className={isOpen ? "h-6 w-6" : "h-3 w-3"} />
-          </Button>
-        </div>
-        <div className="h-full flex-1 py-4">
-          <ScrollArea className="navbar-tabs-height h-full w-full">
-            <nav className="grid items-start gap-1 px-4 text-base font-medium">
-              {menuItems.map((item) => (
-                <NavMenuItem data={item} key={item.labelId} />
-              ))}
-            </nav>
-          </ScrollArea>
-        </div>
-        <div className="mt-auto flex flex-col gap-2">
-          <div className="flex flex-col gap-2 px-4">
-            <LanguageSelector showText={isOpen} className="w-full" />
-            <ThemeButton showText={isOpen} className="w-full" />
-          </div>
+    <>
+      {/* Mobile Navigation */}
+      <MobileNav />
+
+      {/* Desktop Navigation */}
+      <div
+        data-open={isOpen}
+        className="fixed left-0 top-0 z-20 hidden h-screen border-r bg-stone-50 transition-all data-[open=false]:w-[82px] data-[open=true]:w-[300px] dark:bg-stone-900 md:block"
+      >
+        <div className="flex h-full max-h-[100vh] flex-col gap-2 overflow-clip">
           <div
             className={cn(
-              "flex min-w-[250px] flex-row items-center border-t border-stone-200 p-4 dark:border-stone-800",
-              !isOpen && "min-w-[40px]"
+              "border-b border-stone-200 dark:border-stone-800",
+              "flex flex-row items-center p-6 pb-4",
+              !isOpen && "flex-col gap-3 p-1 pb-3 pt-6"
             )}
           >
-            {isOpen && (
-              <>
-                <Avatar className="mr-4 h-9 w-9">
-                  {/* <AvatarImage alt="John Doe" src="/placeholder-avatar.jpg" /> */}
-                  <AvatarFallback>
-                    <span>{name?.charAt(0).toUpperCase()}</span>
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex flex-col">
-                  <h3 className="whitespace-nowrap font-semibold">{name}</h3>
-                  <p className="whitespace-nowrap text-sm text-stone-500 dark:text-stone-400">
-                    {t(data?.role || "User")}
-                  </p>
-                </div>
-              </>
-            )}
-            <LogoutButton fullWidth={!isOpen} />
+            <Link
+              href="/dashboard"
+              className={cn(
+                "relative h-auto min-h-[30px] w-[200px] dark:invert",
+                !isOpen && "min-h-[20px] w-[40px]"
+              )}
+            >
+              <Image
+                src={TOITE_CONFIG.logo.svg}
+                fill
+                style={{
+                  width: "100%",
+                  objectFit: "contain",
+                  objectPosition: "left",
+                }}
+                alt=""
+                priority
+              />
+            </Link>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                toggle();
+              }}
+            >
+              <MenuIcon className={isOpen ? "h-6 w-6" : "h-3 w-3"} />
+            </Button>
+          </div>
+          <div className="h-full flex-1 py-4">
+            <ScrollArea className="navbar-tabs-height h-full w-full">
+              <nav className="grid items-start gap-1 px-4 text-base font-medium">
+                {menuItems.map((item) => (
+                  <NavMenuItem data={item} key={item.labelId} />
+                ))}
+              </nav>
+            </ScrollArea>
+          </div>
+          <div className="mt-auto flex flex-col gap-2">
+            <div className="flex flex-col gap-2 px-4">
+              <LanguageSelector showText={isOpen} className="w-full" />
+              <ThemeButton showText={isOpen} className="w-full" />
+            </div>
+            <div
+              className={cn(
+                "flex min-w-[250px] flex-row items-center border-t border-stone-200 p-4 dark:border-stone-800",
+                !isOpen && "min-w-[40px]"
+              )}
+            >
+              {isOpen && (
+                <>
+                  <Avatar className="mr-4 h-9 w-9">
+                    {/* <AvatarImage alt="John Doe" src="/placeholder-avatar.jpg" /> */}
+                    <AvatarFallback>
+                      <span>{name?.charAt(0).toUpperCase()}</span>
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex flex-col">
+                    <h3 className="whitespace-nowrap font-semibold">{name}</h3>
+                    <p className="whitespace-nowrap text-sm text-stone-500 dark:text-stone-400">
+                      {t(data?.role || "User")}
+                    </p>
+                  </div>
+                </>
+              )}
+              <LogoutButton fullWidth={!isOpen} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

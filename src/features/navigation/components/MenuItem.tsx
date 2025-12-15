@@ -29,7 +29,10 @@ const NavMenuItem: FC<Props> = (props) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const t = useTranslations(MessageCategories.NAVBAR);
-  const { isOpen, toggle } = useNavigationStore();
+  const { isOpen, isMobileOpen, toggle } = useNavigationStore();
+
+  // Show text when desktop is expanded OR mobile drawer is open
+  const showText = isOpen || isMobileOpen;
 
   const pathname = usePathname();
 
@@ -77,9 +80,11 @@ const NavMenuItem: FC<Props> = (props) => {
         "hover:bg-primary/30 hover:text-primary/80 dark:hover:bg-primary dark:hover:text-stone-50",
       disabled &&
         "opacity-50 cursor-not-allowed text-stone-400 dark:text-stone-600",
-      !isOpen && "justify-center"
+      !showText && "justify-center"
     )
   );
+
+  const { closeMobile } = useNavigationStore();
 
   const handleClick = (event: React.MouseEvent) => {
     if (disabled) {
@@ -89,14 +94,20 @@ const NavMenuItem: FC<Props> = (props) => {
     }
 
     if (!isExpandable) {
-      toggle();
+      // On mobile, just close the drawer. On desktop, toggle the sidebar.
+      if (isMobileOpen) {
+        closeMobile();
+      } else {
+        toggle();
+      }
       return;
     }
 
     event.preventDefault();
     event.stopPropagation();
 
-    if (!isOpen) {
+    // For expandable items: if text is not showing (desktop collapsed), expand sidebar first
+    if (!showText) {
       toggle();
       if (isExpanded) return;
     }
@@ -118,8 +129,8 @@ const NavMenuItem: FC<Props> = (props) => {
                 type="button"
               >
                 <div className="h-6 w-6">{icon}</div>
-                {isOpen && <span>{t(labelId)}</span>}
-                {isExpandable && isOpen ? (
+                {showText && <span>{t(labelId)}</span>}
+                {isExpandable && showText ? (
                   isExpanded ? (
                     <ChevronUpIcon className="ml-auto h-4 w-4" />
                   ) : (
@@ -138,8 +149,8 @@ const NavMenuItem: FC<Props> = (props) => {
                 onClick={handleClick}
               >
                 <div className="h-6 w-6">{icon}</div>
-                {isOpen && <span>{t(labelId)}</span>}
-                {isExpandable && isOpen ? (
+                {showText && <span>{t(labelId)}</span>}
+                {isExpandable && showText ? (
                   isExpanded ? (
                     <ChevronUpIcon className="ml-auto h-4 w-4" />
                   ) : (
@@ -154,7 +165,7 @@ const NavMenuItem: FC<Props> = (props) => {
           <TooltipContent
             className={cn(
               "absolute left-7 top-1 flex h-[48px] items-center justify-center whitespace-nowrap",
-              isOpen && !disabled && "hidden"
+              showText && !disabled && "hidden"
             )}
             align="end"
             alignOffset={-300}
@@ -163,7 +174,7 @@ const NavMenuItem: FC<Props> = (props) => {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-      {isExpandable && isOpen && isExpanded ? (
+      {isExpandable && showText && isExpanded ? (
         <div className="ml-4">
           {childrens?.map((child) => (
             <NavMenuItem key={child.labelId} data={child} />
